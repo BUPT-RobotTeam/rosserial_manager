@@ -1,0 +1,12 @@
+<launch>
+    <arg name="port" default="/dev/ttyUSB0"/>
+    <arg name="baud" default="115200"/>
+    <arg name="RX_topic" default="/serial_msg_RX">
+    <arg name="TX_topic" default="/serial_msg_TX">
+
+    <param name="serial_name" value="$(arg port)"/>
+    <param name="serial_baud" value="$(arg baud)"/>
+    <param name="RX_topic" value="$(arg RX_topic)"/>
+    <param name="TX_topic" value="$(arg TX_topic)"/>    
+    <node pkg="rosserial_manager" type="rosserial_manager_node" name="rosserial_manager_node" output="screen" />
+</launch>
