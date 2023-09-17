@@ -10,6 +10,7 @@ project(rosserial_manager)
 find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   roscpp
+  rospy
   serial
   std_msgs
   tf2_geometry_mgs
