@@ -1,12 +1,24 @@
 <launch>
-    <arg name="port" default="/dev/ttyUSB0"/>
-    <arg name="baud" default="115200"/>
-    <arg name="RX_topic" default="/serial_msg_RX">
-    <arg name="TX_topic" default="/serial_msg_TX">
-
-    <param name="serial_name" value="$(arg port)"/>
-    <param name="serial_baud" value="$(arg baud)"/>
-    <param name="RX_topic" value="$(arg RX_topic)"/>
-    <param name="TX_topic" value="$(arg TX_topic)"/>    
-    <node pkg="rosserial_manager" type="rosserial_manager_node" name="rosserial_manager_node" output="screen" />
+    <arg name="port1" default="/dev/ttyACM1"/>
+    <arg name="baud1" default="115200"/>
+    <arg name="RX_topic1" default="/serial_msg_RX"/>
+    <arg name="TX_topic1" default="/serial_msg_TX"/>
+    <arg name="port2" default="/dev/ttyACM2"/>
+    <arg name="baud2" default="9600"/>
+    <arg name="RX_topic2" default="/serial_msg_RX_ultrasound"/>
+    <arg name="TX_topic2" default="/serial_msg_TX_ultrasound"/>
+    <group ns="serial1">
+        <param name="serial_name" value="$(arg port1)"/>
+        <param name="serial_baud" value="$(arg baud1)"/>
+        <param name="RX_topic" value="$(arg RX_topic1)"/>
+        <param name="TX_topic" value="$(arg TX_topic1)"/> 
+        <node pkg="rosserial_manager" type="rosserial_manager_node" name="rosserial_manager_node" output="screen" />
+    </group>
+    <group ns="serial2">
+        <param name="serial_name" value="$(arg port2)"/>
+        <param name="serial_baud" value="$(arg baud2)"/>
+        <param name="RX_topic" value="$(arg RX_topic2)"/>
+        <param name="TX_topic" value="$(arg TX_topic2)"/>
+        <node pkg="rosserial_manager" type="rosserial_manager_node" name="rosserial_manager_node2" output="screen" />
+    </group>
 </launch>

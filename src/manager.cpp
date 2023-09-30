@@ -5,7 +5,7 @@
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "serial_manager");
+    ros::init(argc, argv, "serial_manager", ros::init_options::AnonymousName);
     ros::NodeHandle nh;
     ros::Rate loop_rate(10);
 
